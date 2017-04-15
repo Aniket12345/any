@@ -2,6 +2,8 @@
 int main()
 {
 	printf("hellow \n");
-	printf("hellow git \n");
+	printf("ddd\n");
+	printf("hellow google\n");
+
 	return 0;
 }
