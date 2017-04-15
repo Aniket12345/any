@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<firmwares>
+  <firmware fw_version="121">
+    <family>XCITE</family>
+    <product_name>XC09-009</product_name>
+    <hw_version>J</hw_version>
+    <compatibility_number>2</compatibility_number>
+    <config_buffer_loc>0x1DC0</config_buffer_loc>
+    <flash_page_size>0x40</flash_page_size>
+    <crc_buffer_len>0x18</crc_buffer_len>
+    <function>Hopping</function>
+    <categories>
+      <category name="AT Commands">
+        <description>Commands that configure module parameters via an AT Command interface</description>
+        <categories>
+          <category name="Networking">
+            <description>Enable communications in a networked environment</description>
+            <settings>
+              <setting command="DT">
+                <name>Module Address</name>
+                <description>Sets local module address. Only modules with the same address can communicate with each other.</description>
+                <default_value>0x0</default_value>
+                <control_type>number</control_type>
+                <range_max>0xFFFF</range_max>
+                <range_min>0x0</range_min>
+              </setting>
+              <setting command="HP">
+                <name>Channel</name>
+                <description>Adjusts the module’s channel number to allow the module to hop on a specific hopping sequence. This allows independent networks of modules to operate in the same vicinity.</description>
+                <default_value>0x0</default_value>
+                <control_type>number</control_type>
+                <range_max>0x6</range_max>
+                <range_min>0x0</range_min>
+              </setting>
+              <setting command="MK">
+                <name>Address Mask</name>
+                <description>Sets global address mask &lt;a global address that has the same bits set as the Address Mask&gt;. This can be used to allow a base module to receive data from a range of addresses. It may also be used to configure “subnets” of modules that communicate in a group.</description>
+                <default_value>0xFFFF</default_value>
+                <control_type>number</control_type>
+                <range_max>0xFFFF</range_max>
+                <range_min>0x0</range_min>
+              </setting>
+            </settings>
+          </category>
+          <category name="Serial Interface Options">
+            <description>Enable communications in a networked environment</description>
+            <settings>
+              <setting command="CS">
+                <name>RS-485 Transmit Enable</name>
+                <description>Modifies behavior of the CTS signal.</description>
+                <default_value>0x0</default_value>
+                <control_type>combo</control_type>
+                <items>
+                  <item>Normal</item>
+                  <item>RS-485 enable low</item>
+                  <item>CTS high</item>
+                  <item>RS-485 enable high</item>
+                  <item>CTS low</item>
+                </items>
+              </setting>
+              <setting command="CD">
+                <name>RX LED I/O</name>
+                <description>Redefines the RX LED I/O line.</description>
+                <default_value>0x0</default_value>
+                <control_type>combo</control_type>
+                <items>
+                  <item>RX LED</item>
+                  <item>high</item>
+                  <item>low</item>
+                  <item>input</item>
+                  <item>output</item>
+                  <item>carrier detect</item>
+                </items>
+              </setting>
+            </settings>
+          </category>
+        </categories>
+      </category>
+      <category name="Non-AT Settable Parameters">
+        <description>Parameters that can be only programmed using MaxStream-provided XCite-CTU Software</description>
+        <categories>
+          <category name="AT Command Options">
+            <description>Commands that change AT command mode behavior</description>
+            <settings>
+              <buffer_setting>
+                <buffer_location>14</buffer_location>
+                <bytes_number>1</bytes_number>
+                <name>Command Sequence Character</name>
+                <description>Sets command sequence character. Parameter determines ASCII command sequence character used to enter AT Command Mode. The default value &lt;2BH&gt; is equal to the plus sign &lt;+&gt; in ASCII.</description>
+                <default_value>0x2B</default_value>
+                <control_type>number</control_type>
+                <range_max>0x7F</range_max>
+                <range_min>0x20</range_min>
+              </buffer_setting>
+              <buffer_setting>
+                <buffer_location>8</buffer_location>
+                <bytes_number>2</bytes_number>
+                <name>Silence After Sequence</name>
+                <description>Sets time period of silence after a command sequence.</description>
+                <default_value>0x190</default_value>
+                <control_type>number</control_type>
+                <range_max>0xFFFF</range_max>
+                <range_min>0x2</range_min>
+                <units>milliseconds</units>
+              </buffer_setting>
+              <buffer_setting>
+                <buffer_location>10</buffer_location>
+                <bytes_number>2</bytes_number>
+                <name>Silence Before Sequence</name>
+                <description>Sets time period of silence before a command sequence.</description>
+                <default_value>0x1F4</default_value>
+                <control_type>number</control_type>
+                <range_max>0xFFFF</range_max>
+                <range_min>0x2</range_min>
+                <units>milliseconds</units>
+              </buffer_setting>
+              <buffer_setting>
+                <buffer_location>12</buffer_location>
+                <bytes_number>2</bytes_number>
+                <name>Time Out From Command Mode</name>
+                <description>If no valid commands have been received within this time period, module returns to Idle Mode from AT Command Mode.</description>
+                <default_value>0x200</default_value>
+                <control_type>number</control_type>
+                <range_max>0xFFFF</range_max>
+                <range_min>0x2</range_min>
+                <units>tenths of a second</units>
+              </buffer_setting>
+            </settings>
+          </category>
+          <category name="Networking">
+            <description>Enable communications in a networked environment</description>
+            <settings>
+              <buffer_setting>
+                <buffer_location>0</buffer_location>
+                <bytes_number>2</bytes_number>
+                <name>Assign Module VID</name>
+                <description>Additional networking parameter for creating separate networks</description>
+                <default_value>0x3332</default_value>
+                <control_type>number</control_type>
+                <range_max>0x3332</range_max>
+                <range_min>0x0</range_min>
+              </buffer_setting>
+            </settings>
+          </category>
+          <category name="Serial Interfacing Options">
+            <description>Allows changes to module interfacing options</description>
+            <settings>
+              <buffer_setting>
+                <buffer_location>16</buffer_location>
+                <bytes_number>1</bytes_number>
+                <name>Baud Rate</name>
+                <description>Sets serial com port’s baud rate &lt;BPS&gt; and thus sets the rate at which serial data enters into the module. The Module’s over-the-air baud rate is factory-set and cannot be changed. If serial com port Baud rate is set higher than the fixed over-the-air baud of the module, CTS may need to be implemented</description>
+                <default_value>0x3</default_value>
+                <control_type>combo</control_type>
+                <items>
+                  <item>1200</item>
+                  <item>2400</item>
+                  <item>4800</item>
+                  <item>9600</item>
+                  <item>19200</item>
+                  <item>38400</item>
+                  <item>57600</item>
+                </items>
+              </buffer_setting>
+              <buffer_setting>
+                <buffer_location>21</buffer_location>
+                <bytes_number>1</bytes_number>
+                <name>Number of Bits</name>
+                <description>Sets number of data bits per character - Bits between start and stop bits. Setting 7 bits and Mark or Space parity - NB Parameter - will result in a setting of 7 bits and no parity.</description>
+                <default_value>0x1</default_value>
+                <control_type>combo</control_type>
+                <items>
+                  <item>7 Bits</item>
+                  <item>8 Bits</item>
+                </items>
+              </buffer_setting>
+              <buffer_setting>
+                <buffer_location>18</buffer_location>
+                <bytes_number>1</bytes_number>
+                <name>Parity</name>
+                <description>Sets error-checking parameters for parity systems. Setting 7 bits - BI Parameter - and Mark or Space parity will result in a setting of 7 bits and no parity.</description>
+                <default_value>0x0</default_value>
+                <control_type>combo</control_type>
+                <items>
+                  <item>8-bit no parity or 7-bit yes</item>
+                  <item>8-bit even</item>
+                  <item>8-bit Odd</item>
+                  <item>8-bit Mark</item>
+                  <item>8-bit Space</item>
+                </items>
+              </buffer_setting>
+              <buffer_setting>
+                <buffer_location>19</buffer_location>
+                <bytes_number>1</bytes_number>
+                <name>RTS mode</name>
+                <description>Enable RTS control</description>
+                <default_value>0x0</default_value>
+                <control_type>combo</control_type>
+                <items>
+                  <item>None</item>
+                  <item>RTS Handshaking</item>
+                </items>
+              </buffer_setting>
+              <buffer_setting>
+                <buffer_location>15</buffer_location>
+                <bytes_number>1</bytes_number>
+                <name>Software Flow Control</name>
+                <description>Enables serial software flow control on the module. Hardware flow control CTS is always on.</description>
+                <default_value>0x0</default_value>
+                <control_type>combo</control_type>
+                <items>
+                  <item>No software flow control</item>
+                  <item>Use software flow control</item>
+                </items>
+              </buffer_setting>
+              <buffer_setting>
+                <buffer_location>20</buffer_location>
+                <bytes_number>1</bytes_number>
+                <name>Stop Bits</name>
+                <description>Set number of stop bits</description>
+                <default_value>0x0</default_value>
+                <control_type>combo</control_type>
+                <items>
+                  <item>1 Stop Bit</item>
+                  <item>2 Stop Bits</item>
+                </items>
+              </buffer_setting>
+            </settings>
+          </category>
+          <category name="Sleep (Low Power)">
+            <description>Module can be put into Sleep Mode to reduce the amount of power consumed</description>
+            <settings>
+              <buffer_setting>
+                <buffer_location>7</buffer_location>
+                <bytes_number>1</bytes_number>
+                <name>Beacon Transmit Time</name>
+                <description>Specifies the length of the beacon. The length of the beacon should be longer than the interval if time set using HT Command.</description>
+                <default_value>0x1</default_value>
+                <control_type>number</control_type>
+                <range_max>0xFF</range_max>
+                <range_min>0x0</range_min>
+                <units>tenths of a second</units>
+              </buffer_setting>
+              <buffer_setting>
+                <buffer_location>17</buffer_location>
+                <bytes_number>1</bytes_number>
+                <name>Pin Wake Up</name>
+                <description>Allow pin wake up from Cyclic Sleep Mode</description>
+                <default_value>0x0</default_value>
+                <control_type>combo</control_type>
+                <items>
+                  <item>Disable</item>
+                  <item>Enable</item>
+                </items>
+              </buffer_setting>
+              <buffer_setting>
+                <buffer_location>5</buffer_location>
+                <bytes_number>2</bytes_number>
+                <name>Time-to-Beacon</name>
+                <description>Sets time of inactivity, no serial or over-the-air data is sent or received, before a beacon is used. Value should be shorter than time set with LH Command.</description>
+                <default_value>0xFFFF</default_value>
+                <control_type>number</control_type>
+                <range_max>0xFFFF</range_max>
+                <range_min>0x0</range_min>
+                <units>tenths of a second</units>
+              </buffer_setting>
+              <buffer_setting>
+                <buffer_location>2</buffer_location>
+                <bytes_number>1</bytes_number>
+                <name>Sleep Mode</name>
+                <description>Specifies Sleep Mode settings.</description>
+                <default_value>0x0</default_value>
+                <control_type>combo</control_type>
+                <items>
+                  <item>No Sleep</item>
+                  <item>Pin Sleep</item>
+                  <item>Serial Port Sleep</item>
+                  <item>Cyclic 0.5 second</item>
+                  <item>Cyclic 1.0 second</item>
+                  <item>Cyclic 2.0 second</item>
+                  <item>Cyclic 4.0 second</item>
+                  <item>Cyclic 8.0 second</item>
+                  <item>Cyclic 16.0 second</item>
+                </items>
+              </buffer_setting>
+              <buffer_setting>
+                <buffer_location>3</buffer_location>
+                <bytes_number>2</bytes_number>
+                <name>Time-to-Sleep</name>
+                <description>Time-to-Sleep – Sets time of inactivity before entering Sleep Mode - Only valid with Cyclic and Serial Port Sleep settings.</description>
+                <default_value>0x64</default_value>
+                <control_type>number</control_type>
+                <range_max>0xFFFF</range_max>
+                <range_min>0x10</range_min>
+                <units>tenths of a second</units>
+              </buffer_setting>
+            </settings>
+          </category>
+        </categories>
+      </category>
+      <category name="Read-Only AT Commands">
+        <description>Commands that access read-only parameters set at factory</description>
+        <categories>
+          <category name="Networking">
+            <description></description>
+            <settings>
+              <setting command="ID">
+                <name>Module VID</name>
+                <description>Reads module VID number</description>
+                <default_value>0x</default_value>
+                <control_type>none</control_type>
+              </setting>
+            </settings>
+          </category>
+          <category name="AT Command Options">
+            <description></description>
+            <settings>
+              <setting command="HV">
+                <name>Hardware Version</name>
+                <description>Reads module hardware version number</description>
+                <default_value>0x</default_value>
+                <control_type>none</control_type>
+              </setting>
+              <setting command="SH">
+                <name>Serial Number High</name>
+                <description>Reads high 4 bits of module serial number</description>
+                <default_value>0x</default_value>
+                <control_type>none</control_type>
+              </setting>
+              <setting command="SL">
+                <name>Serial Number Low</name>
+                <description>Reads low 4 bits of module serial number</description>
+                <default_value>0x</default_value>
+                <control_type>none</control_type>
+              </setting>
+              <setting command="VR">
+                <name>Firmware Version</name>
+                <description>Reads module firmware version number</description>
+                <default_value>0x</default_value>
+                <control_type>none</control_type>
+              </setting>
+            </settings>
+          </category>
+        </categories>
+      </category>
+    </categories>
+    <config_commands>
+      <config_command command="HARDWARE_VERSION">
+        <at_command>HV</at_command>
+        <byte_index>1</byte_index>
+        <bytes_number>1</bytes_number>
+        <bytes_returned>2</bytes_returned>
+      </config_command>
+      <config_command command="SOFTWARE_COMPATABLITY"/>
+    </config_commands>
+  </firmware>
+</firmwares>

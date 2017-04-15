@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<firmwares>
+  <firmware fw_version="28062">
+    <family>XTEND</family>
+    <product_name>XT09</product_name>
+    <hw_version>0x14</hw_version>
+    <compatibility_number>3</compatibility_number>
+    <config_buffer_loc>0</config_buffer_loc>
+    <flash_page_size>0x2000</flash_page_size>
+    <crc_buffer_len>0</crc_buffer_len>
+    <function>9XTEND 115K HOPPING (DigiMesh - Australia)</function>
+    <categories>
+      <category name="Networking">
+        <description>Change networking settings</description>
+        <settings>
+          <setting command="ID">
+            <name>Modem VID</name>
+            <description>Set/read radio modem Vendor Identification Number (VID). Only radio modems with matching VIDs can communicate with each other. 0xFFFF means to use factory value.</description>
+            <default_value>0x3332</default_value>
+            <control_type>number</control_type>
+            <range_max>0x7FFF</range_max>
+            <range_min>0x10</range_min>
+          </setting>
+          <setting command="HP">
+            <name>Hopping Channel</name>
+            <description>Set/read spread spectrum channel on which modem communicates. Separate channels minimize interference between multiple sets of modems operating in the same vicinity.</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0x9</range_max>
+            <range_min>0x0</range_min>
+            <units>Channels</units>
+          </setting>
+          <setting command="RR">
+            <name>Mac Retries</name>
+            <description>Set/read maximum number of Mac level RF packet delivery attempts of unicasts. If RR is non-zero packets sent from the radio will request an acknowledgement, and can be resent up to RR times if no acknowledgements are received.</description>
+            <default_value>0xA</default_value>
+            <control_type>number</control_type>
+            <range_max>0xF</range_max>
+            <range_min>0x0</range_min>
+            <units>Retries</units>
+          </setting>
+          <setting command="MT">
+            <name>Multi-Transmit</name>
+            <description>Set/read number of additional broadcast retransmissions. All broadcast packets are transmitted MT+1 times to ensure it is received.</description>
+            <default_value>0x3</default_value>
+            <control_type>number</control_type>
+            <range_max>0xF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="BH">
+            <name>Broadcast Radius</name>
+            <description>Set/Read the transmission radius for broadcast data transmissions. Set to 0 for maximum radius. If BH is set greater than NH then the value of NH is used.</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0x20</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="MR">
+            <name>Mesh Retries</name>
+            <description>Set/read maximum number of network packet delivery attempts. If MR is non-zero, packets sent will request a network acknowledgement, and can be resent up to MR times if no acknowledgements are received.</description>
+            <default_value>0x1</default_value>
+            <control_type>number</control_type>
+            <range_max>0x7</range_max>
+            <range_min>0x0</range_min>
+            <units>Mesh Network Retries</units>
+          </setting>
+          <setting command="NH">
+            <name>Network Hops</name>
+            <description>Set/read maximum number of hops across the network. This number doesn't limit # of hops; rather, it is used to calculate maximum network traversal time and must be set the same on all nodes in the network.</description>
+            <default_value>0x7</default_value>
+            <control_type>number</control_type>
+            <range_max>0x20</range_max>
+            <range_min>0x1</range_min>
+            <units>Hops</units>
+          </setting>
+          <setting command="NN">
+            <name>Network Delay Slots</name>
+            <description>Set/read the maximum number of delay slots before rebroadcasting a network packet.</description>
+            <default_value>0x3</default_value>
+            <control_type>number</control_type>
+            <range_max>0x0a</range_max>
+            <range_min>0x1</range_min>
+            <units>Delay Slots</units>
+          </setting>
+          <setting command="CE">
+            <name>Coordinator Enable</name>
+            <description>Set/read the network type. End Device won't propogate broadcasts and won't become an intermediate node on a route.</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Standard Router</item>
+              <item>NA</item>
+              <item>End Device</item>
+            </items>
+          </setting>
+          <setting command="PL">
+            <name>TX Power Level</name>
+            <description>Select transmit power level. Note that the modem requires 5 VDC supply (or greater) for full 1 Watt output power. If supply voltage is less than 5V, the radio will transmit at the highest power level possible and set a warning flag.</description>
+            <default_value>0x4</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>1 mW</item>
+              <item>10 mW</item>
+              <item>100 mW</item>
+              <item>500 mW</item>
+              <item>1 Watt</item>
+            </items>
+          </setting>
+        </settings>
+      </category>
+      <category name="Addressing">
+        <description>Change addressing settings</description>
+        <settings>
+          <setting command="SH">
+            <name>Serial Number High</name>
+            <description>Read high 32 bits of modems unique IEEE 64-bit Extended Address.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="SL">
+            <name>Serial Number Low</name>
+            <description>Read low 32 bits of modems unique IEEE 64-bit Extended Address.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="DH">
+            <name>Destination Address High</name>
+            <description>Set/read the upper 32 bits of the 64 bit destination extended address. 0x000000000000FFFF is the broadcast address.</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFFFFFF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="DL">
+            <name>Destination Address Low</name>
+            <description>Set/read the lower 32 bits of the 64 bit destination extended address. 0x000000000000FFFF is the broadcast address.</description>
+            <default_value>0xFFFF</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFFFFFF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="NI">
+            <name>Node Identifier</name>
+            <description>Set/read Node Identifier string</description>
+            <default_value>0x20</default_value>
+            <control_type>text</control_type>
+            <max_chars>20</max_chars>
+            <min_chars>0</min_chars>
+            <format>ASCII</format>
+            <exception></exception>
+          </setting>
+          <setting command="NT">
+            <name>Node Discovery Backoff</name>
+            <description>Set/read Node Discovery backoff register. This sets the maximum delay for Node Discovery responses to be sent (ND, DN).</description>
+            <default_value>0x82</default_value>
+            <control_type>number</control_type>
+            <range_max>0x2ee0</range_max>
+            <range_min>0x20</range_min>
+            <units>x 100 ms</units>
+          </setting>
+          <setting command="NO">
+            <name>Node Discovery Options</name>
+            <description>Sets the node discovery options bitfield. Options include 0x01 - Append DD value to end of node discovery, 0x02 - Return devices own ND response first, 0x04 - Return RSSI value of the ND broadcast received by the responding node.</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0x7</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="DD">
+            <name>Device Type Identifier</name>
+            <description>Set/read the device type identifier value. This can be used to differentiate multiple XBee-based products.</description>
+            <default_value>0x</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFFFFFF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+        </settings>
+      </category>
+      <category name="Security">
+        <description>Change security parameters</description>
+        <settings>
+          <setting command="EE">
+            <name>Encryption Enable</name>
+            <description>Enable or disable 128-bit AES encryption.</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disabled</item>
+              <item>Enabled</item>
+            </items>
+          </setting>
+          <setting command="KY">
+            <name>AES Encryption Key</name>
+            <description>Sets the 128-bit key used for encryption and decryption. This register cannot be read.</description>
+            <default_value></default_value>
+            <control_type>text</control_type>
+            <max_chars>32</max_chars>
+            <min_chars>0</min_chars>
+            <format>HEX</format>
+            <exception></exception>
+          </setting>
+        </settings>
+      </category>
+      <category name="Serial Interfacing">
+        <description>Configure serial (UART) interface and I/O line options</description>
+        <settings>
+          <setting command="BD">
+            <name>Baud Rate</name>
+            <description>Select serial interface rate (speed for data transfer between radio modem and host). Values from 0-8 select preset standard rates. Values at 0x39 and above select actual baud rate. Serial data rate does not have to match the RF data rate which is adjustable using the BR command. If the serial data rate is set higher than the RF data rate, CTS may need to be observed to prevent DI buffer overrun.</description>
+            <default_value>0x3</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>1200</item>
+              <item>2400</item>
+              <item>4800</item>
+              <item>9600</item>
+              <item>19200</item>
+              <item>38400</item>
+              <item>57600</item>
+              <item>115200</item>
+              <item>230400</item>
+            </items>
+          </setting>
+          <setting command="NB">
+            <name>Parity</name>
+            <description>Configure parity for the UART.</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>No Parity</item>
+              <item>Even Parity</item>
+              <item>Odd Parity</item>
+              <item>Mark Parity</item>
+              <item>Space Parity</item>
+            </items>
+          </setting>
+          <setting command="SB">
+            <name>Stop Bits</name>
+            <description>Configure the number of stop bits for the UART.</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>One stop bit</item>
+              <item>Two stop bits</item>
+            </items>
+          </setting>
+          <setting command="RB">
+            <name>Packetization Threshold</name>
+            <description>Set/read character threshold. RF transmission is begun after receiving RB bytes, or after receiving at least 1 byte and seeing RO character times of silence on the UART.</description>
+            <default_value>0xD3</default_value>
+            <control_type>number</control_type>
+            <range_max>0x100</range_max>
+            <range_min>0x0</range_min>
+            <units>Bytes</units>
+          </setting>
+          <setting command="RO">
+            <name>Packetization Timeout</name>
+            <description>Set/read number of character times of inter-character delay required before transmission begins. Set to zero to transmit characters as they arrive instead of buffering them into one RF packet.</description>
+            <default_value>0x3</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFF</range_max>
+            <range_min>0x0</range_min>
+            <units>x character times</units>
+          </setting>
+          <setting command="CS">
+            <name>GPO1 Configuration</name>
+            <description>Select behavior of Pin 9 of XTend Module, (CTS on DB9).</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>CTS flow control</item>
+              <item>RS-485 enable low</item>
+              <item>GPO1 static high</item>
+              <item>RS-485 enable high</item>
+              <item>GPO1 static low</item>
+            </items>
+          </setting>
+          <setting command="RT">
+            <name>GPI1 Configuration</name>
+            <description>Select function for Pin 10 of XTend Module, (RTS on DB9).</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Unused</item>
+              <item>Unused</item>
+              <item>RTS Flow Control</item>
+            </items>
+          </setting>
+          <setting command="FT">
+            <name>Flow Control Threshold</name>
+            <description>Set/read the flow control threshold. De-assert CTS and/or send XOFF when FT bytes are in the UART receive buffer.</description>
+            <default_value>0x13F</default_value>
+            <control_type>number</control_type>
+            <range_max>0x16F</range_max>
+            <range_min>0x11</range_min>
+            <units>Bytes</units>
+          </setting>
+          <setting command="CD">
+            <name>GPO2 Configuration</name>
+            <description>Select behavior of Pin 3 of XTend module, (DCD &amp; DSR on DB9).</description>
+            <default_value>0x2</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>RX LED</item>
+              <item>GPO2 static high</item>
+              <item>GP02 static low</item>
+              <item>Unused</item>
+              <item>valid address</item>
+            </items>
+          </setting>
+          <setting command="AP">
+            <name>API Enable</name>
+            <description>Packet mode API formats frames into packets from the RF link to the serial port. It expects serial port packets to be formatted and transmits as a packet over the RF link.</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>API off</item>
+              <item>API without escapes</item>
+              <item>API with escapes</item>
+            </items>
+          </setting>
+          <setting command="AO">
+            <name>API Options</name>
+            <description>Sets the API data frame type output format for received frames.</description>
+            <default_value>0x2</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>XBee DigiMesh - 0x90</item>
+              <item>XBee DigiMesh Explicit - 0x91</item>
+              <item>XTend DigiMesh - 0x80</item>
+            </items>
+          </setting>
+        </settings>
+      </category>
+      <category name="Command Mode Options">
+        <description>Configure Command Mode behavior</description>
+        <settings>
+          <setting command="CT">
+            <name>AT Command Mode Timeout</name>
+            <description>Set/read command mode timeout parameter. If no valid commands have been received within this time period, modem returns to Idle Mode from AT Command Mode.</description>
+            <default_value>0x64</default_value>
+            <control_type>number</control_type>
+            <range_max>0x1770</range_max>
+            <range_min>0x2</range_min>
+            <units>x 100ms</units>
+          </setting>
+          <setting command="GT">
+            <name>Guard Times</name>
+            <description>Set required period of silence before, after and between the Command Mode Characters of the Command Mode Sequence (GT + CC + GT). The period of silence is used to prevent inadvertent entrance into AT Command Mode.</description>
+            <default_value>0x3E8</default_value>
+            <control_type>number</control_type>
+            <range_max>0xCE4</range_max>
+            <range_min>0x2</range_min>
+            <units>x 1ms</units>
+          </setting>
+          <setting command="CC">
+            <name>Command Sequence Character</name>
+            <description>Set/read character value to be used to break from data mode to command mode. The default value (0x2B) is the ASCII code for the plus ('+') character.</description>
+            <default_value>0x2B</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFF</range_max>
+            <range_min>0x0</range_min>
+            <units>Recommended: 0x20-0x7F (ASCII)</units>
+          </setting>
+        </settings>
+      </category>
+      <category name="Diagnostics">
+        <description>Commands used for displaying modem status information</description>
+        <settings>
+          <setting command="VR">
+            <name>Firmware Version</name>
+            <description>Read module firmware version number</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="HV">
+            <name>Hardware Version</name>
+            <description>Read module hardware version number</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="DB">
+            <name>Received Signal Strength</name>
+            <description>Read signal level of last good packet received (RSSI) in dB (reports absolute value, eg. -88dBm = 0x58, accurate between -40 dBm to RX sensitivity).</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="RP">
+            <name>RSSI PWM Timer</name>
+            <description>Set/read duration of PWM (pulse width modulated) output on pin 11. The PWM output encodes fade margin (RX signal strength relative to RX sensitivity) by varying the duty cycle of a 125Hz square wave.</description>
+            <default_value>0x28</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFF</range_max>
+            <range_min>0x0</range_min>
+            <units>x 100 ms</units>
+          </setting>
+          <setting command="TP">
+            <name>Board Temperature</name>
+            <description>Read current temperature of module in degrees Celsius (8-bit twos-complement, eg. 26C = 0x1A, -10C = 0xF6).</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="%V">
+            <name>Board Voltage</name>
+            <description>Read supply voltage to module (VCC) multiplied by 65536 (eg. 5.02V = 5.02*65536 = 0x5051F, maximum of 5 digits returned).</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="ER">
+            <name>Receive Error Count</name>
+            <description>Set/read number of RF Packets rejected because of bit errors in packet.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="GD">
+            <name>Receive Good Count</name>
+            <description>Set/read number of RF Packets successfully received.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="TR">
+            <name>Delivery Failure Count</name>
+            <description>Read number of RF packets sent where retries expire with no ACK received (when RR&gt;0)</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="CK">
+            <name>Configuration Code</name>
+            <description>Read the configuration code associated with the current AT command configuration.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="NP">
+            <name>Maximum Number of RF Payload Bytes</name>
+            <description>Read the maximum number of RF payload bytes that can be sent in a single RF transmission.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+        </settings>
+      </category>
+    </categories>
+    <config_commands>
+      <config_command command="HARDWARE_VERSION">
+        <at_command>HV</at_command>
+        <byte_index>1</byte_index>
+        <bytes_number>1</bytes_number>
+        <bytes_returned>2</bytes_returned>
+      </config_command>
+      <config_command command="SOFTWARE_COMPATABLITY"/>
+    </config_commands>
+  </firmware>
+</firmwares>

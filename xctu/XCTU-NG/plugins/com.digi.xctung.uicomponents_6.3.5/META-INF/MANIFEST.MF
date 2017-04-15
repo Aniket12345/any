@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Export-Package: com.digi.xctung.uicomponents,com.digi.xctung.uicompone
+ nts.colors,com.digi.xctung.uicomponents.customization,com.digi.xctung
+ .uicomponents.dialogs,com.digi.xctung.uicomponents.fonts,com.digi.xct
+ ung.uicomponents.images,com.digi.xctung.uicomponents.preferences,com.
+ digi.xctung.uicomponents.providers,com.digi.xctung.uicomponents.widge
+ ts,com.digi.xctung.uicomponents.widgets.searchnodes
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %pluginName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: org.eclipse.core.runtime,org.eclipse.ui,org.eclipse.jf
+ ace.text
+Bundle-Vendor: %providerName
+Bundle-Version: 6.3.5
+Bundle-ManifestVersion: 2
+Bundle-Activator: com.digi.xctung.uicomponents.UIComponentsPlugin
+Bundle-SymbolicName: com.digi.xctung.uicomponents;singleton:=true
+Import-Package: org.eclipse.swt,org.eclipse.swt.accessibility,org.ecli
+ pse.swt.events,org.eclipse.swt.graphics,org.eclipse.swt.layout,org.ec
+ lipse.swt.widgets,org.eclipse.ui.forms.widgets
+
+

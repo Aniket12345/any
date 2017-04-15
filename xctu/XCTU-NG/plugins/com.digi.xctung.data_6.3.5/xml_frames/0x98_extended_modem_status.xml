@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<frame name="Extended Modem Status">
+  <protocols>
+    <protocol>All</protocol>
+    <protocol>ZigBee</protocol>
+  </protocols>
+  <frame_type>0x98</frame_type>
+  <parameters>
+    <parameter name="Status Code">
+      <control_type>1</control_type>
+      <description>Association status code.</description>
+      <items>
+        <item>Rejoin [00]</item>
+        <item>Stack Status [01]</item>
+        <item>Joining [02]</item>
+        <item>Network formed/Joined to network [03]</item>
+        <item>Beacon Response [04]</item>
+        <item>Reject ZS [05]</item>
+        <item>Reject ID [06]</item>
+        <item>Reject NJ [07]</item>
+        <item>PAN ID Match [08]</item>
+        <item>Reject LQIRSSI [09]</item>
+        <item>Beacon saved [0A]</item>
+        <item>AI value changed [0B]</item>
+        <item>Permit Join duration changed [0C]</item>
+        <item>Active scanning has begun [0D]</item>
+        <item>Error occurred during active scan [0E]</item>
+      </items>  
+      <default_value>Network formed/Joined to network [03]</default_value>
+    </parameter>
+    <parameter name="Status Data">
+      <control_type>0</control_type>
+      <bytes_min>0</bytes_min>
+      <bytes_max>32</bytes_max>
+      <description>The value of this field depends on the Status Code. See the documentation for more information about it.</description>
+      <optional>true</optional>
+    </parameter>
+  </parameters>
+</frame>

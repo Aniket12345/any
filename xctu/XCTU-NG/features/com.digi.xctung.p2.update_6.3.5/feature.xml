@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.digi.xctung.p2.update"
+      label="%featureName"
+      version="6.3.5"
+      provider-name="%providerName"
+      
+      >
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <includes
+         id="org.eclipse.equinox.p2.core.feature"
+         version="1.1.0.v20121211-153934-8297FndFWmE7h7Bpz-vcqkxyKz0"/>
+
+   <includes
+         id="org.eclipse.equinox.p2.extras.feature"
+         version="1.1.0.v20121211-153934-7A6FEcDiVOTg2RYDuZuFz-L2z00w"/>
+
+   <plugin
+         id="org.eclipse.equinox.p2.ui"
+         download-size="0"
+         install-size="0"
+         version="2.2.0.v20130119-010614"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.equinox.p2.ui.importexport"
+         download-size="0"
+         install-size="0"
+         version="1.0.1.v20120913-155635"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.equinox.p2.updatechecker"
+         download-size="0"
+         install-size="0"
+         version="1.1.200.v20110808-1657"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.equinox.p2.updatesite"
+         download-size="0"
+         install-size="0"
+         version="1.0.400.v20120412-1615"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.equinox.security.ui"
+         download-size="0"
+         install-size="0"
+         version="1.1.100.v20120522-2049"
+         unpack="false"/>
+
+   <plugin
+         id="com.digi.xctung.p2.update"
+         download-size="0"
+         install-size="0"
+         version="6.3.5"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.equinox.p2.ui.sdk.scheduler"
+         download-size="0"
+         install-size="0"
+         version="1.1.0.v20110815-1744"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.core.net"
+         download-size="0"
+         install-size="0"
+         version="1.2.200.v20120914-093638"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.core.net.linux.x86"
+         os="linux"
+         arch="x86"
+         download-size="0"
+         install-size="0"
+         version="1.1.200.v20120522-1148"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.core.net.linux.x86_64"
+         os="linux"
+         arch="x86_64"
+         download-size="0"
+         install-size="0"
+         version="1.1.0.v20120522-1148"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.core.net.win32.x86"
+         os="win32"
+         arch="x86"
+         download-size="0"
+         install-size="0"
+         version="1.0.100.v20120522-1148"
+         fragment="true"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.core.net.win32.x86_64"
+         os="win32"
+         arch="x86_64"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         fragment="true"
+         unpack="false"/>
+
+</feature>

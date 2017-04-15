@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-Vendor: %providerName
+Bundle-Version: 6.3.5
+Bundle-Localization: plugin
+Bundle-Name: %pluginName
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: com.digi.xctung.data
+
+

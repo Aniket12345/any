@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<firmwares>
+  <firmware fw_version="42B5">
+    <family>XSTREAM</family>
+    <product_name>XH9-009</product_name>
+    <hw_version>C</hw_version>
+    <compatibility_number>0</compatibility_number>
+    <config_buffer_loc>0</config_buffer_loc>
+    <flash_page_size>0x80</flash_page_size>
+    <crc_buffer_len>0</crc_buffer_len>
+    <function>Hopping</function>
+    <categories>
+      <category name="AT Command Options">
+        <description>Commands that change AT command mode behavior</description>
+        <settings>
+          <setting command="CC">
+            <name>Command Sequence Character</name>
+            <description>Sets the ASCII character to be used between Buard Times of the AT Command Mode Sequence (BT+CC+AT). The AT Command Mode Sequence enters the radio modem to AT Command Mode (from Idle Mode).</description>
+            <default_value>0x2B</default_value>
+            <control_type>number</control_type>
+            <range_max>0x7F</range_max>
+            <range_min>0x20</range_min>
+          </setting>
+          <setting command="AT">
+            <name>Guard Time After</name>
+            <description>Sets required DI pin silent time after the Command Sequence Characters of the AT command Mode Sequence (BT+CC+AT). The DI silent time is used to prevent inadvertent entrance into AT Command Mode.</description>
+            <default_value>0xA</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFF</range_max>
+            <range_min>0x2</range_min>
+            <units>x 100 ms</units>
+          </setting>
+          <setting command="BT">
+            <name>Guard Time Before</name>
+            <description>Set required DI pin silent time before the Command Sequence Characters of the Comand Mode Sequence (BT+CC_AT). The DI silent time is used to prevent inadvertent entrance into AT Command mode.</description>
+            <default_value>0xA</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFF</range_max>
+            <range_min>0x2</range_min>
+            <units>x 100 ms</units>
+          </setting>
+          <setting command="CT">
+            <name>Command Mode Timeout</name>
+            <description>Set time period of inactivity (no valid commands received) after which the radio modem automatically exits from AT Command Mode and returns to Idle Mode.</description>
+            <default_value>0xC8</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFF</range_max>
+            <range_min>0x2</range_min>
+            <units>x 100 ms</units>
+          </setting>
+          <setting command="PC">
+            <name>Power-up Mode</name>
+            <description>Select initial mode of operation after power-up, reset or wake from pin sleep. Parameter value '1' causes the radio modem to power directly to AT Command Mode instead of Idle Model (default).</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Power-up to Idle Mode</item>
+              <item>Power-up to AT Command Mode</item>
+            </items>
+          </setting>
+        </settings>
+      </category>
+      <category name="Diagnostic Commands">
+        <description>Commands that access read-only parameters</description>
+        <settings>
+          <setting command="ER">
+            <name>Receive Error Count</name>
+            <description>Number of RF Packets detected by the receiver but not sent out the DO pin of radio modem due to bit errors.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="GD">
+            <name>Receive Good Count</name>
+            <description>Number of RF Packets successfully received.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="VR">
+            <name>Firmware Version</name>
+            <description>Read firmware version currently loaded on radio modem.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="RS">
+            <name>RSSI - Receive Signal Strength</name>
+            <description>Read the signal level of last good packet received</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="TR">
+            <name>Transmit Error Count</name>
+            <description>Number of RF packets sent with no ACK packet received. (When RR&gt;0).</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="SH">
+            <name>Serial Number High</name>
+            <description>Read High 16 bits of unique serial number of radio modem.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="SL">
+            <name>Serial Number Low</name>
+            <description>Read Low 16 bits of unique serial number of radio modem.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="RP">
+            <name>RSSI PWM Timer</name>
+            <description>Enable a PWM (pulse width modulation) output on the config pin (pin 9 of the OEM RF Module) which shows signal strength of RF packets.</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFF</range_max>
+            <range_min>0x0</range_min>
+            <units>x 100 ms</units>
+          </setting>
+        </settings>
+      </category>
+      <category name="Networking">
+        <description>Enable communications in a networked environment</description>
+        <settings>
+          <setting command="DT">
+            <name>Destination Address</name>
+            <description>Set the address that identifies the destination of the RF packet. Only radio modems having matching addresses can communitcate with each other.</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="HP">
+            <name>Hopping Channel</name>
+            <description>Select hopping channel on which radio modem communicates. These channels are not non-interfering.</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0x6</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="MK">
+            <name>Address Mask</name>
+            <description>Set address mask to configure local and global address space.</description>
+            <default_value>0xFFFF</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="SY">
+            <name>Time before Initialization</name>
+            <description>Set mode that allows RF packets to be received with a shorter RF initializer. Warning: This command is only useful in a limited number of applications. Please see XStream Advanced manual before using.</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFF</range_max>
+            <range_min>0x0</range_min>
+            <units>x 100 ms</units>
+          </setting>
+          <setting command="RN">
+            <name>Delay Slots</name>
+            <description>Sepecifies maximum number of delay slots used for random back-off algorithm after transmission failure.</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFF</range_max>
+            <range_min>0x0</range_min>
+            <units>slots</units>
+          </setting>
+          <setting command="RR">
+            <name>Retries</name>
+            <description>Specifies maximum number of RF Packet attempts. Receiving radio modem(s) must also have RR set to a non-zero value.</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="TT">
+            <name>Streaming Limit</name>
+            <description>Set maximum number of continuous bytes transmitted by one radio modem before forcing a delay that allows other radio modems to transmit.</description>
+            <default_value>0xFFFF</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="ID">
+            <name>Modem VID</name>
+            <description>Read radio modem (VID) Vendor Identification Number. Only radio modems with matching VIDs can communicate with each other.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+        </settings>
+      </category>
+      <category name="Serial Interfacing Options">
+        <description>Allows changes to radio modem interfacing options</description>
+        <settings>
+          <setting command="BD">
+            <name>Interface Data Rate</name>
+            <description>Sets serial (UART host) data rate (rate at which data is sent to the radio modem). Serial data rate is different than RF data rate which is fixed and set at the factory. If the serial data rate is set higher than the RF data rate, CTS may need to be observed in order to prevent DI buffer overrun.</description>
+            <default_value>0x3</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>1200</item>
+              <item>2400</item>
+              <item>4800</item>
+              <item>9600</item>
+              <item>19200</item>
+              <item>38400</item>
+              <item>57600</item>
+            </items>
+          </setting>
+          <setting command="RT">
+            <name>DI2 Configuration</name>
+            <description>Select function for Digital Input 2. RTS/CMD signal - pin 5 of OEM RF Module.</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disable</item>
+              <item>Binary commands</item>
+              <item>RTS Flow Control</item>
+            </items>
+          </setting>
+          <setting command="FL">
+            <name>Software Flow Control</name>
+            <description>Enables serial software flow control on the radio modem. Hardware flow control CTS is on by default.</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>No software flow control</item>
+              <item>Use software flow control</item>
+            </items>
+          </setting>
+          <setting command="FT">
+            <name>Flow Control Threshold</name>
+            <description>Assert CTS or XOFF when FT bytes are in the receiver DO buffer.</description>
+            <default_value>0x</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="CS">
+            <name>DO2 Configuration</name>
+            <description>Select behavior of Digital Output 2 (CTS signal is pin 1 of OEM RF Module).</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Normal</item>
+              <item>RS-485 enable low</item>
+              <item>high</item>
+              <item>RS-485 enable high</item>
+              <item>low</item>
+            </items>
+          </setting>
+          <setting command="NB">
+            <name>Parity</name>
+            <description>Selects parity format. Settings 0-4 transfer only 8 bits over antenna port and generate the parity bit on the radio modem receiving side. NB=5 actually transfers 9 bits out the antenna port.</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>8-bit no parity</item>
+              <item>8-bit even parity</item>
+              <item>8-bit odd parity</item>
+              <item>8-bit mark parity</item>
+              <item>8-bit space parity</item>
+            </items>
+          </setting>
+          <setting command="SB">
+            <name>Stop Bits</name>
+            <description>Select number of stop bits used for UART communications.</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>1 Stop Bit</item>
+              <item>2 Stop Bits</item>
+            </items>
+          </setting>
+          <setting command="CD">
+            <name>DO3 configuration</name>
+            <description>Select behavior of Digital Output 3 (RX LED signal - pin 7 of OEM RF Module).</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>RX LED</item>
+              <item>high</item>
+              <item>low</item>
+              <item>(reserved)</item>
+              <item>RX LED - valid address only</item>
+            </items>
+          </setting>
+          <setting command="RO">
+            <name>Packetization Timeout</name>
+            <description>Begin RF transmission after DI silent time of RO. TX begins when either RO or RB criteria are meet.</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFF</range_max>
+            <range_min>0x0</range_min>
+            <units>x 0.2 ms</units>
+          </setting>
+        </settings>
+      </category>
+      <category name="Sleep (Low Power)">
+        <description>Radio modem can be put into Sleep Mode to reduce the amount of power consumed</description>
+        <settings>
+          <setting command="SM">
+            <name>Sleep Mode</name>
+            <description>Specifies Sleep Mode settings.</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>No Sleep</item>
+              <item>Pin Sleep</item>
+              <item>Serial Port Sleep</item>
+              <item>Cyclic 0.5 second</item>
+              <item>Cyclic 1.0 second</item>
+              <item>Cyclic 2.0 second</item>
+              <item>Cyclic 4.0 second</item>
+              <item>Cyclic 8.0 second</item>
+              <item>Cyclic 16.0 second</item>
+            </items>
+          </setting>
+          <setting command="LH">
+            <name>Wake-up Initializer Time</name>
+            <description>Set time of the Wake-up Initializer used to wake remote radios that are in cyclic sleep mode. Time of Wake-up Initializer should be longer than that of the remotes radio's cyclic sleep cycle (SM 2-8).</description>
+            <default_value>0x1</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFF</range_max>
+            <range_min>0x0</range_min>
+            <units>x 100 ms</units>
+          </setting>
+          <setting command="HT">
+            <name>Time before Wake-up Initializer</name>
+            <description>Sets time of inactivity, no serial or over-the-air data is sent or received, before a Wake-up Initializer is sent. Base station tracks awake-status of remote radios. HT of base radio should be set shorter than ST of remote radios.</description>
+            <default_value>0xFFFF</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFF</range_max>
+            <range_min>0x0</range_min>
+            <units>x 100 ms</units>
+          </setting>
+          <setting command="ST">
+            <name>Time before Sleep</name>
+            <description>Sets time period of inactivity (no serial or RF data is sent or received) before activating Sleep Mode - Only valid with Cyclic and Serial Port Sleep settings.</description>
+            <default_value>0x64</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFF</range_max>
+            <range_min>0x10</range_min>
+            <units>x 100 ms</units>
+          </setting>
+          <setting command="PW">
+            <name>Pin Wake-up</name>
+            <description>Enables pin wake-up from Cyclic Sleep Mode.</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disable</item>
+              <item>Enable</item>
+            </items>
+          </setting>
+        </settings>
+      </category>
+    </categories>
+    <config_commands>
+      <config_command command="HARDWARE_VERSION">
+        <at_command>HV</at_command>
+        <byte_index>1</byte_index>
+        <bytes_number>1</bytes_number>
+        <bytes_returned>2</bytes_returned>
+      </config_command>
+      <config_command command="SOFTWARE_COMPATABLITY"/>
+    </config_commands>
+  </firmware>
+</firmwares>

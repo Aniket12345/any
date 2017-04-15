@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<firmwares>
+  <firmware fw_version="864B">
+    <family>XBEE-PRO</family>
+    <product_name>XBP24-DM</product_name>
+    <hw_version>X</hw_version>
+    <compatibility_number>1</compatibility_number>
+    <config_buffer_loc>0</config_buffer_loc>
+    <flash_page_size>0xfe</flash_page_size>
+    <crc_buffer_len>0</crc_buffer_len>
+    <function>XBee Pro DigiMesh 2.4 - AIO Adapter</function>
+    <categories>
+      <category name="Networking">
+        <description>Change networking settings</description>
+        <settings>
+          <setting command="ID">
+            <name>Modem VID</name>
+            <description>Set the PAN (Personal Area Network) ID for the network. Valid range is 0 - 0xFFFF</description>
+            <default_value>0x7FFF</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="CH">
+            <name>Operating Channel</name>
+            <description>Set/read the operating channel number (Uses 802.15.4 channel numbers).</description>
+            <default_value>0xC</default_value>
+            <control_type>number</control_type>
+            <range_max>0x17</range_max>
+            <range_min>0x0C</range_min>
+          </setting>
+          <setting command="RR">
+            <name>Mac Retries</name>
+            <description>Set/read maximum number of Mac level RF packet delivery attempts of unicasts. If RR is non-zero packets sent from the radio will request an acknowledgement, and can be resent up to RR times if no acknowledgements are received.</description>
+            <default_value>0xA</default_value>
+            <control_type>number</control_type>
+            <range_max>0xF</range_max>
+            <range_min>0x0</range_min>
+            <units>Retries</units>
+          </setting>
+          <setting command="MT">
+            <name>Multi-Transmit</name>
+            <description>Set/read number of additional broadcast retransmissions. All broadcast packets are transmitted MT+1 times to ensure it is received.</description>
+            <default_value>0x3</default_value>
+            <control_type>number</control_type>
+            <range_max>0xF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="BH">
+            <name>Broadcast Radius</name>
+            <description>Set/Read the transmission radius for broadcast data transmissions. Set to 0 for maximum radius. If BH is set greater than NH then the value of NH is used.</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0x20</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="MR">
+            <name>Mesh Retries</name>
+            <description>Set/read maximum number of network packet delivery attempts. If MR is non-zero, packets sent will request a network acknowledgement, and can be resent up to MR times if no acknowledgements are received.</description>
+            <default_value>0x1</default_value>
+            <control_type>number</control_type>
+            <range_max>0x7</range_max>
+            <range_min>0x0</range_min>
+            <units>Mesh Network Retries</units>
+          </setting>
+          <setting command="NH">
+            <name>Network Hops</name>
+            <description>Set/read maximum number of hops across the network. This number doesn't limit # of hops; rather, it is used to calculate maximum network traversal time and must be set the same on all nodes in the network.</description>
+            <default_value>0x7</default_value>
+            <control_type>number</control_type>
+            <range_max>0x20</range_max>
+            <range_min>0x1</range_min>
+            <units>Hops</units>
+          </setting>
+          <setting command="NN">
+            <name>Network Delay Slots</name>
+            <description>Set/read the maximum number of delay slots before rebroadcasting a network packet.</description>
+            <default_value>0x3</default_value>
+            <control_type>number</control_type>
+            <range_max>0x0a</range_max>
+            <range_min>0x1</range_min>
+            <units>Delay Slots</units>
+          </setting>
+          <setting command="CE">
+            <name>Coordinator Enable</name>
+            <description>Set/read the network type. End Device won't propogate broadcasts and won't become an intermediate node on a route.</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Standard Router</item>
+              <item>NA</item>
+              <item>End Device</item>
+            </items>
+          </setting>
+        </settings>
+      </category>
+      <category name="Addressing">
+        <description>Change addressing settings</description>
+        <settings>
+          <setting command="SH">
+            <name>Serial Number High</name>
+            <description>Read high 32 bits of modems unique IEEE 64-bit Extended Address.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="SL">
+            <name>Serial Number Low</name>
+            <description>Read low 32 bits of modems unique IEEE 64-bit Extended Address.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="DH">
+            <name>Destination Address High</name>
+            <description>Set/read the upper 32 bits of the 64 bit destination extended address. 0x000000000000FFFF is the broadcast address.</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFFFFFF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="DL">
+            <name>Destination Address Low</name>
+            <description>Set/read the lower 32 bits of the 64 bit destination extended address. 0x000000000000FFFF is the broadcast address.</description>
+            <default_value>0xFFFF</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFFFFFF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="NI">
+            <name>Node Identifier</name>
+            <description>Set/read Node Identifier string</description>
+            <default_value>0x20</default_value>
+            <control_type>text</control_type>
+            <max_chars>20</max_chars>
+            <min_chars>0</min_chars>
+            <format>ASCII</format>
+            <exception></exception>
+          </setting>
+          <setting command="NT">
+            <name>Node Discovery Backoff</name>
+            <description>Set/read Node Discovery backoff register. This sets the maximum delay for Node Discovery responses to be sent (ND, DN).</description>
+            <default_value>0x82</default_value>
+            <control_type>number</control_type>
+            <range_max>0x2ee0</range_max>
+            <range_min>0x20</range_min>
+            <units>x 100 ms</units>
+          </setting>
+          <setting command="NO">
+            <name>Node Discovery Options</name>
+            <description>Sets the node discovery options register. Options include 0x01 - Append DD value to end of node discovery, 0x02 - Return devices own ND response first.</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0x3</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="DD">
+            <name>Device Type Identifier</name>
+            <description>Set/read the device type identifier value. This can be used to differentiate multiple XBee-based products.</description>
+            <default_value>0x</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFFFFFF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+        </settings>
+      </category>
+      <category name="Security">
+        <description>Change security parameters</description>
+        <settings>
+          <setting command="EE">
+            <name>Encryption Enable</name>
+            <description>Enable or disable 128-bit AES encryption.</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disabled</item>
+              <item>Enabled</item>
+            </items>
+          </setting>
+          <setting command="KY">
+            <name>AES Encryption Key</name>
+            <description>Sets the 128-bit key used for encryption and decryption. This register cannot be read.</description>
+            <default_value></default_value>
+            <control_type>text</control_type>
+            <max_chars>32</max_chars>
+            <min_chars>0</min_chars>
+            <format>HEX</format>
+            <exception></exception>
+          </setting>
+        </settings>
+      </category>
+      <category name="Serial Interfacing">
+        <description>Change modem interfacing options</description>
+        <settings>
+          <setting command="BD">
+            <name>Baud Rate</name>
+            <description>Set/read the serial interface baud rate for communication between modem serial port and host. Request non-standard baud rates with values above 0x80 using a terminal window. Read BD register to find actual baud rate achieved.</description>
+            <default_value>0x3</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>1200</item>
+              <item>2400</item>
+              <item>4800</item>
+              <item>9600</item>
+              <item>19200</item>
+              <item>38400</item>
+              <item>57600</item>
+              <item>115200</item>
+              <item>230400</item>
+            </items>
+          </setting>
+          <setting command="NB">
+            <name>Parity</name>
+            <description>Configure parity for the UART.</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>No Parity</item>
+              <item>Even Parity</item>
+              <item>Odd Parity</item>
+              <item>Mark Parity</item>
+              <item>Space Parity</item>
+            </items>
+          </setting>
+          <setting command="D7">
+            <name>DIO7 Configuration</name>
+            <description>Configure options for the DIO7 line of the module.</description>
+            <default_value>0x5</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disable</item>
+              <item>CTS flow control</item>
+              <item>NA</item>
+              <item>Digital Input</item>
+              <item>Digital Out, Low</item>
+              <item>Digital Out, High</item>
+            </items>
+          </setting>
+          <setting command="D6">
+            <name>DIO6 Configuration</name>
+            <description>Configure options for the DIO6 line of the module.</description>
+            <default_value>0x5</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disable</item>
+              <item>RTS flow control</item>
+              <item>NA</item>
+              <item>Digital Input</item>
+              <item>Digital Out, Low</item>
+              <item>Digital Out, High</item>
+            </items>
+          </setting>
+          <setting command="FT">
+            <name>Flow Control Threshold</name>
+            <description>Set/read the flow control threshold. De-assert CTS when FT bytes are in the UART receive buffer.</description>
+            <default_value>0xBE</default_value>
+            <control_type>number</control_type>
+            <range_max>0xEE</range_max>
+            <range_min>0x11</range_min>
+            <units>Bytes</units>
+          </setting>
+        </settings>
+      </category>
+      <category name="I/O Settings">
+        <description>Modify DIO and ADC options</description>
+        <settings>
+          <setting command="D0">
+            <name>AD0/DIO0 Configuration</name>
+            <description>Configure options for the AD0/DIO0 line of the module. Options include: Enabling commissioning button functionality, Analog to Digital converter,Digital Input and Output.</description>
+            <default_value>0x2</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disabled</item>
+              <item>Commissioning Button</item>
+              <item>ADC</item>
+              <item>Digital Input</item>
+              <item>Digital Out, Low</item>
+              <item>Digital Out, High</item>
+            </items>
+          </setting>
+          <setting command="D1">
+            <name>AD1/DIO1 Configuration</name>
+            <description>Configure options for the AD1/DIO1 line of the module. Options include: Analog to Digital converter, Digital Input and Output.</description>
+            <default_value>0x2</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disabled</item>
+              <item>NA</item>
+              <item>ADC</item>
+              <item>Digital Input</item>
+              <item>Digital Out, Low</item>
+              <item>Digital Out, High</item>
+            </items>
+          </setting>
+          <setting command="D2">
+            <name>AD2/DIO2 Configuration</name>
+            <description>Configure options for the AD2/DIO2 line of the module. Options include: Analog to Digital converter, Digital Input and Output.</description>
+            <default_value>0x2</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disabled</item>
+              <item>NA</item>
+              <item>ADC</item>
+              <item>Digital Input</item>
+              <item>Digital Out, Low</item>
+              <item>Digital Out, High</item>
+            </items>
+          </setting>
+          <setting command="D3">
+            <name>AD3/DIO3 Configuration</name>
+            <description>Configure options for the AD3/DIO3 line of the module. Options include: Analog to Digital converter, Digital Input and Output.</description>
+            <default_value>0x2</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disabled</item>
+              <item>NA</item>
+              <item>ADC</item>
+              <item>Digital Input</item>
+              <item>Digital Out, Low</item>
+              <item>Digital Out, High</item>
+            </items>
+          </setting>
+          <setting command="D4">
+            <name>AD4/DIO4 Configuration</name>
+            <description>Configure options for the AD4/DIO4 line of the module. Options include: Analog to Digital converter, Digital Input and Output.</description>
+            <default_value>0x5</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disabled</item>
+              <item>NA</item>
+              <item>ADC</item>
+              <item>Digital Input</item>
+              <item>Digital Out, Low</item>
+              <item>Digital Out, High</item>
+            </items>
+          </setting>
+          <setting command="D5">
+            <name>AD5/DIO5/Assoc. Configuration</name>
+            <description>Configure options for the AD5/DIO5/Assoc. line of the module. Options include: Associated LED indicator (blinks when associated), Analog to Digital converter, Digital Input and Output.</description>
+            <default_value>0x1</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disabled</item>
+              <item>Associated Indicator</item>
+              <item>ADC</item>
+              <item>Digital Input</item>
+              <item>Digital Out, Low</item>
+              <item>Digital Out, High</item>
+            </items>
+          </setting>
+          <setting command="D8">
+            <name>DIO8 Configuration</name>
+            <description>Configure options for the DIO8 line of the module. Options include: Digital Input and Output.</description>
+            <default_value>0x4</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disabled</item>
+              <item>NA</item>
+              <item>NA</item>
+              <item>Digital Input</item>
+              <item>Digital Out, Low</item>
+              <item>Digital Out, High</item>
+            </items>
+          </setting>
+          <setting command="D9">
+            <name>DIO9/ON_SLEEP Configuration</name>
+            <description>Configure options for the DIO9 line of the module. Options include: ON/SLEEP Indicator, Digital Input and Output.</description>
+            <default_value>0x1</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disabled</item>
+              <item>ON/SLEEP indicator</item>
+              <item>NA</item>
+              <item>Digital Input</item>
+              <item>Digital Out, Low</item>
+              <item>Digital Out, High</item>
+            </items>
+          </setting>
+          <setting command="P0">
+            <name>DIO10/RSSI/PWM0 Configuration</name>
+            <description>Configure options for the DIO10/RSSI/PWM0 line of the module. Options include: RSSI PWM Output, PWM0 Output, Digital Input, and Output.</description>
+            <default_value>0x4</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disabled</item>
+              <item>RSSI PWM0 Output</item>
+              <item>PWM0 Output</item>
+              <item>Digital Input</item>
+              <item>Digital Out, Low</item>
+              <item>Digital Out, High</item>
+            </items>
+          </setting>
+          <setting command="P1">
+            <name>DIO11/PWM1 Configuration</name>
+            <description>Configure options for the DIO11/PWM1 line of the module. Options include: PWM1 Output, Digital Input, and Output.</description>
+            <default_value>0x3</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disabled</item>
+              <item>NA</item>
+              <item>PWM1 Output</item>
+              <item>Digital Input</item>
+              <item>Digital Out, Low</item>
+              <item>Digital Out, High</item>
+            </items>
+          </setting>
+          <setting command="P2">
+            <name>DIO12 Configuration</name>
+            <description>Configure options for the DIO12 line of the module. Options include: Digital Input and Output.</description>
+            <default_value>0x5</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disabled</item>
+              <item>NA</item>
+              <item>NA</item>
+              <item>Digital Input</item>
+              <item>Digital Out, Low</item>
+              <item>Digital Out, High</item>
+            </items>
+          </setting>
+          <setting command="P3">
+            <name>DIO13/DOUT Configuration</name>
+            <description>Configure options for the DIO13 line of the module. Options include: Digital Input and Output.</description>
+            <default_value>0x4</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Disabled</item>
+              <item>NA</item>
+              <item>NA</item>
+              <item>Digital Input</item>
+              <item>Digital Out, Low</item>
+              <item>Digital Out, High</item>
+            </items>
+          </setting>
+          <setting command="M0">
+            <name>PWM0 duty cycle</name>
+            <description>Set/read the duty cycle of the PWM0 line (pin 6)</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0x3FF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="M1">
+            <name>PWM1 duty cycle</name>
+            <description>Set/read the duty cycle of the PWM1 line (pin 7)</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0x3FF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="LT">
+            <name>Associate LED Blink Time</name>
+            <description>Set/read the Associate LED blink rate. This value determines the blink rate of the Associate/DIO5 pin if D5=1 and the module has started a network. Setting LT to 0 will use the default blink time (250ms).</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFF</range_max>
+            <range_min>0x14</range_min>
+            <units>x10 ms</units>
+          </setting>
+          <setting command="RP">
+            <name>RSSI PWM Timer</name>
+            <description>Set/read PWM timer register. Set duration of PWM (pulse width modulation) signal output on the RSSI pin (P6). The signal duty cycle is updated with each received packet and is shut off when the timer expires.</description>
+            <default_value>0x28</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFF</range_max>
+            <range_min>0x0</range_min>
+            <units>x 100 ms</units>
+          </setting>
+          <setting command="PR">
+            <name>Pull-up Resistor Enable</name>
+            <description>Set/read bitfield to configure internal pullup resistors status for I/O lines. 1=internal pullup enabled, 0=no internal pullup. Bitfield map: (12)-DIO11, (11)-DIO10/PWM0, (10)-DIO12, (9)-On/Sleep, (8)Associate, (7)-DIN/Config, (6)-Sleep_Rq, (5)-RTS, (4)-AD0/DIO0, (3)-AD1/DIO1, (2)-AD2/DIO2, (1)-AD3/DIO3, (0)-DIO4</description>
+            <default_value>0x80</default_value>
+            <control_type>number</control_type>
+            <range_max>0x1FFF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+        </settings>
+        <categories>
+          <category name="I/O Sampling">
+            <description>Configure IO sampling parameters</description>
+            <settings>
+              <setting command="IC">
+                <name>DIO Change Detect</name>
+                <description>Set/Read bitfield values for change detect monitoring.Each bit enables monitoring of DIO0-DIO12 for changes. If detected, data is transmitted with DIO data only.</description>
+                <default_value>0x0</default_value>
+                <control_type>number</control_type>
+                <range_max>0xFFFF</range_max>
+                <range_min>0x0</range_min>
+              </setting>
+              <setting command="IR">
+                <name>Sample Rate</name>
+                <description>Set/read sample rate. When set this parameter causes the modem to sample all enabled DIO and ADC at a specified interval.</description>
+                <default_value>0x0</default_value>
+                <control_type>number</control_type>
+                <range_max>0xFFFF</range_max>
+                <range_min>0x0</range_min>
+                <units>X 1 ms</units>
+              </setting>
+              <setting command="IF">
+                <name>Sample From Sleep Rate</name>
+                <description>Set/read the number of sleep cycles that must elapse between periodic IO samples. This allows IO samples to be taken only during some wake cycles. During those cycles IO samples are taken at the rate specified by IR.</description>
+                <default_value>0x1</default_value>
+                <control_type>number</control_type>
+                <range_max>0xFF</range_max>
+                <range_min>0x1</range_min>
+              </setting>
+            </settings>
+          </category>
+        </categories>
+      </category>
+      <category name="AT Command Options">
+        <description>Change AT command mode behavior</description>
+        <settings>
+          <setting command="CT">
+            <name>AT Command Mode Timeout</name>
+            <description>Set/read command mode timeout parameter. If no valid commands have been received within this time period, modem returns to Idle Mode from AT Command Mode.</description>
+            <default_value>0x64</default_value>
+            <control_type>number</control_type>
+            <range_max>0x1770</range_max>
+            <range_min>0x2</range_min>
+            <units>x 100ms</units>
+          </setting>
+          <setting command="GT">
+            <name>Guard Times</name>
+            <description>Set required period of silence before, after and between the Command Mode Characters of the Command Mode Sequence (GT + CC + GT). The period of silence is used to prevent inadvertent entrance into AT Command Mode.</description>
+            <default_value>0x3E8</default_value>
+            <control_type>number</control_type>
+            <range_max>0xCE4</range_max>
+            <range_min>0x2</range_min>
+            <units>x 1ms</units>
+          </setting>
+          <setting command="CC">
+            <name>Command Sequence Character</name>
+            <description>Set/read character value to be used to break from data mode to command mode. The default value (0x2B) is the ASCII code for the plus ('+') character.</description>
+            <default_value>0x2B</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFF</range_max>
+            <range_min>0x0</range_min>
+            <units>Recommended: 0x20-0x7F (ASCII)</units>
+          </setting>
+        </settings>
+      </category>
+      <category name="Diagnostic Commands">
+        <description>Access diagnostic parameters</description>
+        <settings>
+          <setting command="DB">
+            <name>Last Packet Rssi</name>
+            <description>Read the RSSI of the last received packet.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="VR">
+            <name>Firmware Version</name>
+            <description>Read modem firmware version number.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="HV">
+            <name>Hardware Version</name>
+            <description>Read modem hardware version number.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="ER">
+            <name>Receive Error Count</name>
+            <description>Set/read number of RF Packets rejected because of bit errors in packet.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="GD">
+            <name>Receive Good Count</name>
+            <description>Set/read number of RF Packets successfully received.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="TR">
+            <name>Delivery Failure Count</name>
+            <description>Read number of RF packets sent where retries expire with no ACK received (when RR&gt;0)</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="SQ">
+            <name>Missed Sleep Synch Count</name>
+            <description>Read number of sleep cycles in which a sleep synch has not been received.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="CK">
+            <name>Configuration Code</name>
+            <description>Read the configuration code associated with the current AT command configuration.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="NP">
+            <name>Maximum Number of RF Payload Bytes</name>
+            <description>Read the maximum number of RF payload bytes that can be sent in a single RF transmission.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+        </settings>
+      </category>
+      <category name="RF Interfacing">
+        <description>Change RF interface options</description>
+        <settings>
+          <setting command="PL">
+            <name>Power Level</name>
+            <description>Select/Read transmitter output power.</description>
+            <default_value>0x4</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Lowest</item>
+              <item>Low</item>
+              <item>Medium</item>
+              <item>High</item>
+              <item>Highest</item>
+            </items>
+          </setting>
+        </settings>
+      </category>
+      <category name="Sleep Commands">
+        <description>Configure sleeping parameters</description>
+        <settings>
+          <setting command="WH">
+            <name>Wake Host Delay</name>
+            <description>Set/read the time the module will delay before sending serial data out the UART or taking IO samples after waking from sleep. This can be used to give a sleeping host processor sufficient time to power up after the module asserts the ON_SLEEP line.</description>
+            <default_value>0x0</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFFFF</range_max>
+            <range_min>0x0</range_min>
+            <units>X 1 ms</units>
+          </setting>
+          <setting command="SO">
+            <name>Sleep Options</name>
+            <description>Bitfield of options for a sleep compatible node. Bit 0 - Preferred Sleep Coord. Setting this bit will cause a sleep compatible node to always act as sleep coordinator. Bit 1 - Non-Sleep Coord. will cause a node to never act as a sleep coordinator. Bit 2 - Enable API sleep status messages. Bit 3 - Disable automatic early wakeup for missed synchs. Bit 4 - Disable seniority based on node type. Bit 5 - Disable coordinator rapid sync deployment mode.</description>
+            <default_value>0x2</default_value>
+            <control_type>number</control_type>
+            <range_max>0xFF</range_max>
+            <range_min>0x0</range_min>
+          </setting>
+          <setting command="SM">
+            <name>Sleep Mode</name>
+            <description>Normal mode is always awake. Cyclic mode sleeps for SP time and wakes for ST time. Sleep Support mode is always awake but can effectively communicate with SM8 nodes.</description>
+            <default_value>0x0</default_value>
+            <control_type>combo</control_type>
+            <items>
+              <item>Normal</item>
+              <item>N/A</item>
+              <item>N/A</item>
+              <item>N/A</item>
+              <item>N/A</item>
+              <item>N/A</item>
+              <item>N/A</item>
+              <item>Sleep Support</item>
+              <item>Synchronized Cyclic Sleep</item>
+            </items>
+          </setting>
+          <setting command="SS">
+            <name>Sleep Status</name>
+            <description>Bitfield of sleep status bits. See product manual for full description. Bit 0 - Is network awake? Bit 1 - Is sleep coordinator? Bit 2 - Ever received synch? Bit 3 - RX synch this cycle? Bit 4 - Overriding synch pending? Bit 5 - Nomination Requested? Bit 6 - Is in deployment mode? (All other bits are reserved and should be ignored)</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="OS">
+            <name>Operating Sleep Time</name>
+            <description>Read the current network sleep time that this node is synchronized to, in units of 10 milliseconds. If this node has not been synched then OS will return the value of SP.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="OW">
+            <name>Operating Wake Time</name>
+            <description>Read the current network wake time that this node is synchronized to, in units of milliseconds. If this node has not been synched then OW will return the value of ST.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="MS">
+            <name>Missed Synch Messages</name>
+            <description>Read the number of sleep/wake cycles since the node received a synch message.</description>
+            <default_value>0x</default_value>
+            <control_type>none</control_type>
+          </setting>
+          <setting command="SP">
+            <name>Sleep Time</name>
+            <description>In cyclic mode, node will sleep with CTS disabled for the sleep time interval, then wake for the wake time interval.</description>
+            <default_value>0xC8</default_value>
+            <control_type>number</control_type>
+            <range_max>0x15f900</range_max>
+            <range_min>0x1</range_min>
+            <units>x 10 ms</units>
+          </setting>
+          <setting command="ST">
+            <name>Wake Time</name>
+            <description>Minimum wake time is a function of SP, NN, NH, and platform dependent values. Value will be raised automatically to a valid value when SP, NN, NH are increased. Maximum value is an hour (or 0x36ee80 ms).</description>
+            <default_value>0x7D0</default_value>
+            <control_type>number</control_type>
+            <range_max>0x36EE80</range_max>
+            <range_min>0x1B</range_min>
+            <units>x 1 ms</units>
+          </setting>
+        </settings>
+      </category>
+    </categories>
+    <config_commands>
+      <config_command command="HARDWARE_VERSION">
+        <at_command>HV</at_command>
+        <byte_index>1</byte_index>
+        <bytes_number>1</bytes_number>
+        <bytes_returned>2</bytes_returned>
+      </config_command>
+      <config_command command="SOFTWARE_COMPATABLITY"/>
+    </config_commands>
+  </firmware>
+</firmwares>

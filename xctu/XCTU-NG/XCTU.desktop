@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=6.3.5.1
+Name=XCTU
+Comment=Configuration and Test Utiity
+Icon=/home/ash/wafer/xctu/XCTU-NG/icon.xpm
+Exec=env UBUNTU_MENUPROXY=0 GTK2_RC_FILES=$GTK2_RC_FILES:/home/ash/wafer/xctu/XCTU-NG/.gtkrc-eclipse /home/ash/wafer/xctu/XCTU-NG/app
+Terminal=false
+Path=/home/ash/wafer/xctu/XCTU-NG

@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+repositories/file\:_home_devtest_bamboo-agent-home_xml-data_build-dir_XCTU-XBR-DUM_build_temp_buildRepo/enabled=true
+repositories/file\:_home_devtest_bamboo-agent-home_xml-data_build-dir_XCTU-XBR-DUM_build_temp_buildRepo/isSystem=false
+repositories/file\:_home_devtest_bamboo-agent-home_xml-data_build-dir_XCTU-XBR-DUM_build_temp_buildRepo/name=${p2.metadata.repo.name}
+repositories/file\:_home_devtest_bamboo-agent-home_xml-data_build-dir_XCTU-XBR-DUM_build_temp_buildRepo/suffix=content.xml
+repositories/file\:_home_devtest_bamboo-agent-home_xml-data_build-dir_XCTU-XBR-DUM_build_temp_buildRepo/type=org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository
+repositories/file\:_home_devtest_bamboo-agent-home_xml-data_build-dir_XCTU-XBR-DUM_build_temp_buildRepo/uri=file\:/home/devtest/bamboo-agent-home/xml-data/build-dir/XCTU-XBR-DUM/build_temp/buildRepo/
+repositories/file\:_home_devtest_bamboo-agent-home_xml-data_build-dir_XCTU-XBR-DUM_build_temp_buildRepo/version=1.0.0
+repositories/ftp\:__ftp1.digi.com_support_XCTU-NG_repository/count=2
+repositories/ftp\:__ftp1.digi.com_support_XCTU-NG_repository/enabled=true
+repositories/ftp\:__ftp1.digi.com_support_XCTU-NG_repository/isSystem=false
+repositories/ftp\:__ftp1.digi.com_support_XCTU-NG_repository/nickname=XCTU
+repositories/ftp\:__ftp1.digi.com_support_XCTU-NG_repository/uri=ftp\://ftp1.digi.com/support/XCTU-NG/repository/

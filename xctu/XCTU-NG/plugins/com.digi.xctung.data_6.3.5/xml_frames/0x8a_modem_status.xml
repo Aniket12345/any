@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<frame name="Modem Status">
+  <protocols>
+    <protocol>All</protocol>
+    <protocol>ZigBee</protocol>
+    <protocol>802.15.4</protocol>
+    <protocol>DigiMesh</protocol>
+    <protocol>Point-to-multipoint</protocol>
+    <protocol>ZNet 2.5</protocol>
+    <protocol>Smart Energy</protocol>
+    <protocol>Wi-Fi</protocol>
+    <protocol>XTend (DigiMesh)</protocol>
+    <protocol>XTend (Legacy)</protocol>
+    <protocol>XLR</protocol>
+    <protocol>XLR Module</protocol>
+    <protocol>Cellular</protocol>
+  </protocols>
+  <frame_type>0x8a</frame_type>
+  <parameters>
+    <parameter name="Status">
+      <control_type>1</control_type>
+      <description>The status of the AT Command.</description>
+      <items>
+        <item>Hardware reset [00]</item>
+        <item>Watchdog timer reset [01]</item>
+        <item>Joined network (routers and end devices) [02]</item>
+        <item>Disassociated [03]</item>
+        <item>Configuration error/synchronization lost [04]</item>
+        <item>Coordinator realignment [05]</item>
+        <item>Coordinator started [06]</item>
+        <item>Network security key updated [07]</item>
+        <item>Network Woke Up [0B]</item>
+        <item>Network Went To Sleep [0C]</item>
+        <item>Voltage supply limit exceed (PRO S2B only) [0D]</item>
+        <item>Device Cloud connected [0E]</item>
+        <item>Device Cloud disconnected [0F]</item>
+        <item>Modem configuration changed while join in progress [11]</item>
+        <item>Stack error (80+) [80]</item>
+        <item>Send/join command issued without connecting from AP [82]</item>
+        <item>Access point not found [83]</item>
+        <item>PSK not configured [84]</item>
+        <item>SSID not found [87]</item>
+        <item>Failed to join with security enabled [88]</item>
+        <item>Invalid channel [8A]</item>
+        <item>Failed to join access point [8E]</item>
+      </items>
+      <default_value>Coordinator started [06]</default_value>
+    </parameter>
+  </parameters>
+</frame>

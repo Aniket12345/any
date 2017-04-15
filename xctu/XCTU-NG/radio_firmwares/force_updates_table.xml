@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<table>
+  <timestamp>2541720000</timestamp>
+  <size>38</size>
+  <wildcards>
+    <wildcard>
+      <firmware_path>xbee_cell/XBXC-1005+</firmware_path>
+      <min_xctu_version>6.3.4</min_xctu_version>
+      <action>REINSTALL</action>
+      <message></message>
+    </wildcard>
+  </wildcards>
+  <force_updates>
+    <force_update>
+      <firmware_path>xbee_cell/XBXC-1005.zip</firmware_path>
+      <min_xctu_version>6.3.4</min_xctu_version>
+      <action>REINSTALL</action>
+      <message></message>
+      <from_wildcard>true</from_wildcard>
+      <done>true</done>
+    </force_update>
+  </force_updates>
+</table>
